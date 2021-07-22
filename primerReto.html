@@ -1,0 +1,27 @@
+<script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=s0JxByLOqKSFrsN5O_Sc4cDp-Xwgnj4x1C9zS1eFf9pW13hmmgGNh5QBBIl2Wjqo-8rgpjMiO5oGuGfSOZIxmxjvHCG5RebW3mDDKt-9aOJaCMnXh_HWe9BcCsDdGnJ1m5fFSgiYA7uwJ7q-_wtsICVChOYUGsRxvwggwI0IzbVb-s0NAMwdR3TcM1dK5Jf6bhMiB90yQfjqBnL6yDXzDSMrvBMvKQiDVUFtt1UV5c4zq6L7EYMzw__XkZRYmUWTktgZHlPWTMAdnWSkJ8DsBoT6MpNhZ6u7yZgaD4_hHt5eEGaWnvrNFKhHB85SBB-l" charset="UTF-8"></script><link rel="stylesheet" crossorigin="anonymous" href="https://gc.kis.v2.scr.kaspersky-labs.com/E3E8934C-235A-4B0E-825A-35A08381A191/abn/main.css?attr=aHR0cHM6Ly9maXJlYmFzZXN0b3JhZ2UuZ29vZ2xlYXBpcy5jb20vdjAvYi9naXRib29rLTI4NDI3LmFwcHNwb3QuY29tL28vYXNzZXRzJTJmLU00VnRsTzBJZy05emZfazZBbHclMmYtTUNLMDNpWXVFZENqNkkwd0h2RyUyZi1NQ0sxb1NRQ24wNy1BRFU5NnNOJTJmcHJpbWVyUmV0by5odG1sP2FsdD1tZWRpYSZ0b2tlbj04NDAwNjk3OS04NjRhLTRhOTktOGY5ZC0zNTYxNTc5ZDRmNTM"/><!DOCTYPE>
+<html>
+<head>
+  <meta charset="UTF-8">
+<title>asincronismo</title>
+ 
+<script type="text/javascript">
+
+/*
+Realiza un programa donde la primera función declarada sea la última en imprimirse, la segunda función la primera y la tercera se imprima después de la segunda 
+*/
+
+const myCallbackFirst = () => console.log("Primera función!");
+const myCallbackSecond = () => console.log("Segunda función!");
+const myCallbackThird = () => console.log("Tercera función!");
+setTimeout(myCallbackFirst, 10);
+setTimeout(myCallbackSecond, 0);
+setTimeout(myCallbackThird, 5);
+
+
+</script>
+</head>
+ 
+<body>
+<p>Esta página contiene el el uso de asincronismo</p>
+</body>
+</html>

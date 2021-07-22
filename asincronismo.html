@@ -1,0 +1,91 @@
+<script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=7ZlXLpi5MBxyaZszWRVDngUUYi5AyuTtvHGs_7p_xZKwHYNe2g1uFhNCL5Y5f-MWnoioC47Eclbs899dnf0zFYQG1He9-b_xGHmsMEBAeL0oRB45rfIa4c_NW_jWrUhhasoUn7GLV_Wb3oiaQSOQ_J9EEvJzMLX6S8VNAk9dNgnosrWoaGkB32UFvS6c7df8KfIgYMKW76KtCiuIbj-tOCX-fWhi-oGMbEYRKcJHodqS0FvaW9OcUDbsPsVxfpr8dLqF33gdo2izdmX9pi6L-qjyJES21h0-E3P10ylrzVJrKGhw36ZxfnqF6IE2yZp0" charset="UTF-8"></script><link rel="stylesheet" crossorigin="anonymous" href="https://gc.kis.v2.scr.kaspersky-labs.com/E3E8934C-235A-4B0E-825A-35A08381A191/abn/main.css?attr=aHR0cHM6Ly9maXJlYmFzZXN0b3JhZ2UuZ29vZ2xlYXBpcy5jb20vdjAvYi9naXRib29rLTI4NDI3LmFwcHNwb3QuY29tL28vYXNzZXRzJTJmLU00VnRsTzBJZy05emZfazZBbHclMmYtTUNLMDNpWXVFZENqNkkwd0h2RyUyZi1NQ0sxalVfN3BqeWNJZjRoc1JQJTJmYXNpbmNyb25pc21vLmh0bWw_YWx0PW1lZGlhJnRva2VuPTNkMzJkYzU1LWY4NGUtNDgxNy05YmY1LTJkMjFjNGRlNTRiYg"/><!DOCTYPE>
+<html>
+<head>
+  <meta charset="UTF-8">
+<title>asincronismo</title>
+ 
+<script type="text/javascript">
+
+//Ejemplo sencillo utilizando un callback:
+
+setTimeout(function(){
+  console.log("Hola Mundo con retraso!");
+}, 1000)
+
+//Si lo prefieres, el callback puede ser asignado a una variable con nombre en lugar de ser anónimo:
+
+const myCallback = () => console.log("Hola Mundo con retraso!");
+setTimeout(myCallback, 1000);
+
+/*
+setTimeout es una función asíncrona que programa la ejecución de un callback una vez ha transcurrida una determinada cantidad de tiempo (1 segundo en el ejemplo anterior). A tal fin, dispara un timer en un contexto externo y registra el callback para ser ejecutado una vez que el timer termine. En resumen, retrasa una ejecución, como mínimo, la cantidad especificada de tiempo.
+
+Es importante comprender que, incluso si configuramos el retraso como 0ms, no significa que el callback vaya a ejecutarse inmediatamente. Atento al siguiente ejemplo:
+*/
+
+setTimeout(function(){
+  console.log("Esto debería aparecer primero");
+}, 0);
+console.log("Sorpresa!");
+// Sorpresa!
+// Esto debería aparecer primero
+
+
+
+
+
+
+//Promesas
+
+/*A resumidas cuentas, una promesa es un objeto al que le adjuntamos callbacks, en lugar de pasarlos directamente a la función asíncrona. 
+
+ Las promesas son muy útiles para envolver antiguas APIs asíncronas que funcionan a través de callbacks puros. De esta forma podemos hacerlas funcionar via promesas:
+ */
+
+ const delay = time => new Promise(resolveCallback => setTimeout(resolveCallback, time));
+
+delay(3000)
+  .then(() => console.log(`Este es un retardo de al menos 3 segundos`))
+  .catch(() => console.log(`Retardo fallido`));
+
+ // LLamada asíncrona con callback puro.
+setTimeout(() => console.log("1"), 0); 
+
+// LLamada asíncrona con promesa.
+Promise.resolve().then(() => console.log("2"));
+
+// 2
+// 1
+
+
+
+
+
+
+/*
+La etiqueta async declara una función como asíncrona e indica que una promesa será automáticamente devuelta. Podemos declarar como async tanto funciones con nombre, anónimas, o funciones flecha. Por otro lado, await debe ser usado siempre dentro de una función declarada como async y esperará automáticamente (de forma asíncrona y no bloqueante) a que una promesa se resuelva.
+
+Observa el siguiente ejemplo:
+*/
+
+async function regresarSaludo() {
+	return "Me gusta JS";
+}
+async function otraFuncion() {
+	let saludo = await regresarSaludo();
+	// Este código no se ejecuta hasta que la promesa
+	// de arriba se resuelve ;)
+	console.log("El saludo es: ", saludo);
+}
+
+otraFuncion();
+
+
+
+</script>
+</head>
+ 
+<body>
+<p>Esta página contiene el el uso de asincronismo</p>
+</body>
+</html>
